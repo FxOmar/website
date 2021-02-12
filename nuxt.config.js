@@ -42,6 +42,14 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/router',
+      {
+        path: 'router',
+        fileName: 'index.js',
+        keepDefaultRouter: true,
+      },
+    ],
   ],
   /*
   ** Nuxt.js modules
@@ -73,7 +81,7 @@ export default {
     */
     extend (config, ctx) {
     },
-
+  
     postcss: {
 			plugins: {
 				"postcss-color-function": {},
@@ -81,5 +89,8 @@ export default {
 				tailwindcss: "./tailwind.config.js",
 			}
 		},
-  }
+  },
+  env: {
+    AppUrl: process.env.APP_URL || "https://gdg.io/",
+  },
 }
